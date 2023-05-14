@@ -26,7 +26,14 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
+   const foodsCollection =client.db('foodsDB').collection('foods')
 
+
+   // Creat 
+   app.post('/foods',async(req,res)=>{
+    const newFoods = req.body;
+    console.log(newFoods);
+   })
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
