@@ -10,12 +10,6 @@ const port = process.env.PORT || 5000;
 app.use(cors())
 app.use(express.json());
 
-// FoodeWeb
-// Nd2ybt3EvnZ3sr3S
-
-console.log(process.env.DB_FOOD_USER,process.env.BD_FOOD_PASS);
-
-// const uri = "mongodb+srv://FoodeWeb:Nd2ybt3EvnZ3sr3S@cluster0.fnxcgsn.mongodb.net/?retryWrites=true&w=majority";
 const uri = `mongodb+srv://${process.env.DB_FOOD_USER}:${process.env.BD_FOOD_PASS}@cluster0.fnxcgsn.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
