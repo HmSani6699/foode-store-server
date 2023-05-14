@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 5000;
@@ -38,12 +38,19 @@ async function run() {
         // Creat 
         app.post('/foods', async (req, res) => {
             const newFoods = req.body;
-            console.log(newFoods);
-
             // Data send to mongodb
             const result = await foodsCollection.insertOne(newFoods);
             res.send(result)
         })
+
+        // Delete
+        app.delete('/foods/:id',async(req,res)=>{
+            const id =req.params.id;
+            const query = {_id:new ObjectId(id)};
+            const result = await foodsCollection.deleteOne(query);
+            res.send(result)
+        })
+
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
