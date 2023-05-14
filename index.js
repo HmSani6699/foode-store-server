@@ -28,11 +28,17 @@ async function run() {
 
    const foodsCollection =client.db('foodsDB').collection('foods')
 
+   // Read
+
 
    // Creat 
    app.post('/foods',async(req,res)=>{
     const newFoods = req.body;
     console.log(newFoods);
+
+    // Data send to mongodb
+    const result = await foodsCollection.insertOne(newFoods);
+    res.send(result)
    })
 
     // Send a ping to confirm a successful connection
